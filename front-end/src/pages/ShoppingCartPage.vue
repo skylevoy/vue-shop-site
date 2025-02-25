@@ -28,7 +28,7 @@ export default {
         async user(newUserValue) {
             if (newUserValue) {
                 // Check if the product is already in the cart
-                const cartResponse = await axios.get(`/api/users/${newUserValue.uid}/cart`);
+                const cartResponse = await axios.get(`/api/users/${newUserValue}/cart`);
                 const cartItems = cartResponse.data;
                 this.cartItems = cartItems;
             }
@@ -36,14 +36,14 @@ export default {
     },
     methods: {
         async removeFromCart(productId) {
-            const response = await axios.delete(`/api/users/${this.user.uid}/cart/${productId}`);
+            const response = await axios.delete(`/api/users/${this.user}/cart/${productId}`);
             const updatedCart = response.data;
             this.cartItems = updatedCart;
         }
     },
     async created() {
         if (this.user) {
-            const response = await axios.get(`/api/users/${this.user.uid}/cart`);
+            const response = await axios.get(`/api/users/${this.user}/cart`);
             const cartItems = response.data;
             this.cartItems = cartItems;
         }

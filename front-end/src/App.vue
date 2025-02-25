@@ -1,12 +1,11 @@
 <template>
-  <NavBar :user="user" />
+  <NavBar />
   <div class="page-wrap">
     <router-view :user="user" />
   </div>
 </template>
 
 <script>
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import NavBar from './components/NavBar.vue';
 
 export default {
@@ -16,14 +15,8 @@ export default {
   },
   data() {
     return {
-      user: null,
+      user: '12345',
     }
-  },
-  created() {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      this.user = user;
-    });
   },
 }
 </script>
