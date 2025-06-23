@@ -1,0 +1,5 @@
+projects:
+    - key: default
+      dir: front-end/src
+      aliases:
+        - type: camelcase
